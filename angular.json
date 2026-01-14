@@ -29,6 +29,51 @@
 						"styles": ["src/styles.scss"]
 					},
 					"configurations": {
+						"testing": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.testing.ts"
+								}
+							],
+							"optimization": true,
+							"sourceMap": true,
+							"namedChunks": true,
+							"extractLicenses": false
+						},
+						"staging": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.staging.ts"
+								}
+							],
+							"outputHashing": "all"
+						},
 						"production": {
 							"budgets": [
 								{
@@ -40,6 +85,12 @@
 									"type": "anyComponentStyle",
 									"maximumWarning": "4kB",
 									"maximumError": "8kB"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.production.ts"
 								}
 							],
 							"outputHashing": "all"
@@ -55,6 +106,12 @@
 				"serve": {
 					"builder": "@angular/build:dev-server",
 					"configurations": {
+						"testing": {
+							"buildTarget": "client:build:testing"
+						},
+						"staging": {
+							"buildTarget": "client:build:staging"
+						},
 						"production": {
 							"buildTarget": "client:build:production"
 						},
