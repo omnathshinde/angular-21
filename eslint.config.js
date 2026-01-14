@@ -1,12 +1,22 @@
 // @ts-check
-const eslint = require("@eslint/js");
-const { defineConfig } = require("eslint/config");
-const tseslint = require("typescript-eslint");
-const angular = require("angular-eslint");
+import eslint from "@eslint/js";
+import { defineConfig } from "eslint/config";
+import tseslint from "typescript-eslint";
+import angular from "angular-eslint";
+import simpleImportSort from "eslint-plugin-simple-import-sort";
+import eslintPluginImport from "eslint-plugin-import";
+import pluginPrettier from "eslint-plugin-prettier";
+import prettierConfig from "eslint-config-prettier";
 
-module.exports = defineConfig([
+export default defineConfig([
+	prettierConfig,
 	{
 		files: ["**/*.ts"],
+		plugins: {
+			"simple-import-sort": simpleImportSort,
+			import: eslintPluginImport,
+			prettier: pluginPrettier,
+		},
 		extends: [
 			eslint.configs.recommended,
 			tseslint.configs.recommended,
@@ -15,6 +25,34 @@ module.exports = defineConfig([
 		],
 		processor: angular.processInlineTemplates,
 		rules: {
+			"prettier/prettier": "error",
+			"simple-import-sort/imports": [
+				"error",
+				{
+					groups: [["^node:"], ["^@?\\w"], ["^src/", "^@app", "^@core"], ["^\\."], ["^\\u0000"]],
+				},
+			],
+			"simple-import-sort/exports": "error",
+
+			"import/first": "error",
+			"import/no-duplicates": "error",
+			"import/newline-after-import": "error",
+			"import/no-relative-parent-imports": "error",
+
+			"no-restricted-imports": [
+				"error",
+				{
+					patterns: [
+						{
+							group: ["../*"],
+							message: "❌ Avoid relative imports — use @models, @common, or @services aliases instead.",
+						},
+					],
+				},
+			],
+
+			"@typescript-eslint/no-unused-vars": "error",
+			"@typescript-eslint/no-explicit-any": "error",
 			"@angular-eslint/directive-selector": [
 				"error",
 				{
