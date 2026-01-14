@@ -2,6 +2,14 @@
 	"name": "client",
 	"type": "module",
 	"version": "0.0.0",
+	"lint-staged": {
+		"**/*.{ts,js}": [
+			"eslint --fix"
+		],
+		"**/*.{ts,js,json,md,scss,html,css}": [
+			"prettier --write"
+		]
+	},
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
@@ -10,7 +18,8 @@
 		"format": "prettier --write .",
 		"format:check": "prettier --check .",
 		"lint": "eslint .",
-		"lint:fix": "eslint --fix"
+		"lint:fix": "eslint --fix",
+		"prepare": "husky"
 	},
 	"private": true,
 	"dependencies": {
@@ -34,12 +43,14 @@
 		"eslint-plugin-import": "^2.32.0",
 		"eslint-plugin-prettier": "^5.5.5",
 		"eslint-plugin-simple-import-sort": "^12.1.1",
+		"husky": "^9.1.7",
 		"jasmine-core": "~5.9.0",
 		"karma": "~6.4.0",
 		"karma-chrome-launcher": "~3.2.0",
 		"karma-coverage": "~2.2.0",
 		"karma-jasmine": "~5.1.0",
 		"karma-jasmine-html-reporter": "~2.1.0",
+		"lint-staged": "^16.2.7",
 		"typescript": "~5.9.2",
 		"typescript-eslint": "8.46.4"
 	}
