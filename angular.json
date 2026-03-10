@@ -26,7 +26,10 @@
 								"input": "public"
 							}
 						],
-						"styles": ["src/styles.scss", "node_modules/ngx-toastr/toastr.css"]
+						"styles": ["src/styles.scss", "node_modules/ngx-toastr/toastr.css"],
+						"stylePreprocessorOptions": {
+							"includePaths": ["src/styles"]
+						}
 					},
 					"configurations": {
 						"testing": {
@@ -135,7 +138,10 @@
 								"input": "public"
 							}
 						],
-						"styles": ["src/styles.scss", "node_modules/ngx-toastr/toastr.css"]
+						"styles": ["src/styles.scss", "node_modules/ngx-toastr/toastr.css"],
+						"stylePreprocessorOptions": {
+							"includePaths": ["src/styles"]
+						}
 					}
 				},
 				"lint": {

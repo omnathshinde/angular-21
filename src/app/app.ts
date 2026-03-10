@@ -17,8 +17,13 @@ export class App {
 	toastr = inject(ToastrService);
 	protected readonly title = signal(environment.apiUrl);
 	name = "Omnath Shinde";
+	isDarkTheme = false;
 
 	onClick() {
 		this.toastr.success("Hello", "World");
+	}
+
+	toggleTheme(): void {
+		this.isDarkTheme = !this.isDarkTheme;
 	}
 }

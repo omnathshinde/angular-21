@@ -206,7 +206,7 @@
 	}
 </style>
 
-<main class="main">
+<main class="main" [class.light-theme]="!isDarkTheme" [class.dark-theme]="isDarkTheme">
 	<div class="content">
 		<div class="left-side">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 982 239" fill="none" class="angular-logo">
@@ -264,6 +264,13 @@
 					<mat-icon>share</mat-icon>
 				</button>
 			</mat-toolbar>
+			<mat-toolbar color="primary">
+				<mat-icon>dashboard</mat-icon>
+				<span>Material Components Demo</span>
+			</mat-toolbar>
+			<button matButton="outlined">Basic</button>
+			<button matButton="filled">Hello</button>
+			<button matButton="filled" color="warn">Basic</button>
 		</div>
 		<div class="divider" role="separator" aria-label="Divider"></div>
 		<div class="right-side">
