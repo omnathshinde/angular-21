@@ -42,13 +42,13 @@ Or use `npx` to run Angular CLI commands without global installation.
 cd client
 ```
 
-2. **Install dependencies**:
+1. **Install dependencies**:
 
 ```bash
 npm install
 ```
 
-3. **Set up Git hooks** (Husky):
+1. **Set up Git hooks** (Husky):
 
 ```bash
 npm run prepare

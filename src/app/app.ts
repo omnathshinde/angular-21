@@ -1,8 +1,9 @@
-import { Component, signal } from "@angular/core";
+import { Component, inject, signal } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIcon } from "@angular/material/icon";
 import { MatToolbar } from "@angular/material/toolbar";
 import { RouterOutlet } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 
 import { environment } from "src/environments/environment";
 
@@ -13,6 +14,11 @@ import { environment } from "src/environments/environment";
 	styleUrl: "./app.scss",
 })
 export class App {
+	toastr = inject(ToastrService);
 	protected readonly title = signal(environment.apiUrl);
 	name = "Omnath Shinde";
+
+	onClick() {
+		this.toastr.success("Hello", "World");
+	}
 }
